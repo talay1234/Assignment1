@@ -42,7 +42,7 @@ API Server นี้มี Endpoints ทั้งหมด 4 ส่วน:
 * **Request Body (JSON):** `drone_id`, `drone_name`, `country`, `celsius`
 * **ตัวอย่าง `curl`:**
     ```bash
-    curl -X POST [https://assignment1-ui1l.onrender.com/logs](https://assignment1-ui1l.onrender.com/logs) \
+    curl -X POST https://assignment1-ui1l.onrender.com/logs \
          -H "Content-Type: application/json" \
          -d '{"drone_id": 66011456, "drone_name": "MyDrone", "country": "TH", "celsius": 32.5}'
     ```
