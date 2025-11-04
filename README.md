@@ -52,7 +52,7 @@ API Server นี้มี Endpoints ทั้งหมด 4 ส่วน:
 ### 1. Clone Repository
 
 ```bash
-git clone <your-github-repository-url>
+git clone https://github.com/talay1234/Assignment1.git
 cd drone1
 ```
 
@@ -67,12 +67,12 @@ npm install
 สร้างไฟล์ `.env` ที่ root ของ project และคัดลอกเนื้อหาด้านล่างไปวาง จากนั้นใส่ค่า URL และ Token ที่ถูกต้อง (ตามที่ได้รับใน Assignment)
 
 ```env
-# พอร์ตสำหรับรัน Server (Default คือ 4000)
+# พอร์ต
 PORT=4000
 
 # URL ของ Server ภายนอก
-DRONE_CONFIG_URL=[https://script.google.com/macros/s/AKfycbzwclqJRodyVjzYyY-NTQDb9cWG6Hoc5vGAABVtr5-jPA_ET_2IasrAJK4aeo5XoONiaA/exec](https://script.google.com/macros/s/AKfycbzwclqJRodyVjzYyY-NTQDb9cWG6Hoc5vGAABVtr5-jPA_ET_2IasrAJK4aeo5XoONiaA/exec)
-LOG_URL=[https://app-tracking.pockethost.io/api/collections/drone_logs/records](https://app-tracking.pockethost.io/api/collections/drone_logs/records)
+DRONE_CONFIG_URL=https://script.google.com/macros/s/AKfycbzwclqJRodyVjzYyY-NTQDb9cWG6Hoc5vGAABVtr5-jPA_ET_2IasrAJK4aeo5XoONiaA/exec
+LOG_URL=https://app-tracking.pockethost.io/api/collections/drone_logs/records
 
 # Token สำหรับ Drone Log Server
 LOG_API_TOKEN=20250901efx
