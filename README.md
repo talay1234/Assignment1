@@ -1,30 +1,52 @@
 # Drone API Server (Assignment #1)
 
-[cite_start]project API Server ที่สร้างขึ้นด้วย Node.js และ Express.js สำหรับ Assignment #1 [cite: 1, 2] [cite_start]โดย Server นี้ทำหน้าที่เป็น Proxy เพื่อเรียกใช้บริการจาก 2 Servers ภายนอก คือ Drone Config Server [cite: 11] [cite_start]และ Drone Log Server[cite: 16].
+project API Server ที่สร้างขึ้นด้วย Node.js และ Express.js สำหรับ Assignment #1 โดย Server นี้ทำหน้าที่เป็น Proxy เพื่อเรียกใช้บริการจาก 2 Servers ภายนอก คือ Drone Config Server และ Drone Log Server.
 
 ## Features (Endpoints)
 
-API Server นี้มี Endpoints ทั้งหมด 3 ส่วนหลัก:
+API Server นี้มี Endpoints ทั้งหมด 4 ส่วน:
 
-1.  **`GET /configs/:droneId`**
-    * [cite_start]ดึงข้อมูล Config ของ Drone ตาม ID ที่ระบุ 
-    * [cite_start]**Response Fields:** `drone_id`, `drone_name`, `light`, `country`, `weight` 
+### 1. `GET /configs/:droneId`
 
-2.  **`GET /status/:droneId`**
-    * [cite_start]ดึงข้อมูลสถานะ (Condition) ของ Drone ตาม ID ที่ระบุ 
-    * [cite_start]**Response Fields:** `condition` 
+ดึงข้อมูล Config ของ Drone ตาม ID ที่ระบุ
+* **Response Fields:** `drone_id`, `drone_name`, `light`, `country`, `weight`
+* **ตัวอย่าง `curl`:**
+    ```bash
+    curl [https://assignment1-ui1l.onrender.com/configs/66011456](https://assignment1-ui1l.onrender.com/configs/66011456)
+    ```
 
-3.  **`GET /logs/:droneId`**
-    * [cite_start]ดึงข้อมูล Log การบินของ Drone ตาม ID ที่ระบุ 
-    * **Features:**
-        * [cite_start]เรียงลำดับจาก **"created"** (เวลาสร้าง) ล่าสุดก่อน 
-        * [cite_start]จำกัด 12 รายการ หากไม่ระบุ pagination 
-        * [cite_start]รองรับ Pagination (คะแนนพิเศษ)  ผ่าน Query-params: `?page=...` และ `?perPage=...`
-    * [cite_start]**Response Fields:** `drone_id`, `drone_name`, `created`, `country`, `celsius` 
+### 2. `GET /status/:droneId`
 
-4.  **`POST /logs`**
-    * [cite_start]สร้าง Log record ใหม่ใน Drone Log Server [cite: 74]
-    * [cite_start]**Request Body (JSON):** ต้องมี `drone_id`, `drone_name`, `country`, `celsius` 
+ดึงข้อมูลสถานะ (Condition) ของ Drone ตาม ID ที่ระบุ
+* **Response Fields:** `condition`
+* **ตัวอย่าง `curl`:**
+    ```bash
+    curl [https://assignment1-ui1l.onrender.com/status/66011456](https://assignment1-ui1l.onrender.com/status/66011456)
+    ```
+
+### 3. `GET /logs/:droneId`
+
+ดึงข้อมูล Log การบินของ Drone ตาม ID ที่ระบุ (เรียงใหม่สุดก่อน)
+* **Response Fields:** `drone_id`, `drone_name`, `created`, `country`, `celsius`
+* **ตัวอย่าง `curl` (Default 12 รายการ):**
+    ```bash
+    curl [https://assignment1-ui1l.onrender.com/logs/66011456](https://assignment1-ui1l.onrender.com/logs/66011456)
+    ```
+* **ตัวอย่าง `curl` (Pagination):**
+    ```bash
+    curl "[https://assignment1-ui1l.onrender.com/logs/66011456?page=1&perPage=5](https://assignment1-ui1l.onrender.com/logs/66011456?page=1&perPage=5)"
+    ```
+
+### 4. `POST /logs`
+
+สร้าง Log record ใหม่
+* **Request Body (JSON):** `drone_id`, `drone_name`, `country`, `celsius`
+* **ตัวอย่าง `curl`:**
+    ```bash
+    curl -X POST [https://assignment1-ui1l.onrender.com/logs](https://assignment1-ui1l.onrender.com/logs) \
+         -H "Content-Type: application/json" \
+         -d '{"drone_id": 66011456, "drone_name": "MyDrone", "country": "TH", "celsius": 32.5}'
+    ```
 
 ## Install and Run project
 
@@ -43,7 +65,7 @@ npm install
 
 ### 3. สร้างไฟล์ .env
 
-[cite_start]สร้างไฟล์ `.env` [cite: 6] [cite_start]ที่ root ของ project และคัดลอกเนื้อหาด้านล่างไปวาง จากนั้นใส่ค่า URL และ Token ที่ถูกต้อง [cite: 7, 8] (ตามที่ได้รับใน Assignment)
+สร้างไฟล์ `.env` ที่ root ของ project และคัดลอกเนื้อหาด้านล่างไปวาง จากนั้นใส่ค่า URL และ Token ที่ถูกต้อง (ตามที่ได้รับใน Assignment)
 
 ```env
 # พอร์ตสำหรับรัน Server (Default คือ 4000)
