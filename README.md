@@ -12,7 +12,7 @@ API Server นี้มี Endpoints ทั้งหมด 4 ส่วน:
 * **Response Fields:** `drone_id`, `drone_name`, `light`, `country`, `weight`
 * **ตัวอย่าง `curl`:**
     ```bash
-    curl [https://assignment1-ui1l.onrender.com/configs/66011456](https://assignment1-ui1l.onrender.com/configs/66011456)
+    curl https://assignment1-ui1l.onrender.com/configs/66011456
     ```
 
 ### 2. `GET /status/:droneId`
@@ -21,7 +21,7 @@ API Server นี้มี Endpoints ทั้งหมด 4 ส่วน:
 * **Response Fields:** `condition`
 * **ตัวอย่าง `curl`:**
     ```bash
-    curl [https://assignment1-ui1l.onrender.com/status/66011456](https://assignment1-ui1l.onrender.com/status/66011456)
+    curl https://assignment1-ui1l.onrender.com/status/66011456
     ```
 
 ### 3. `GET /logs/:droneId`
@@ -30,11 +30,10 @@ API Server นี้มี Endpoints ทั้งหมด 4 ส่วน:
 * **Response Fields:** `drone_id`, `drone_name`, `created`, `country`, `celsius`
 * **ตัวอย่าง `curl` (Default 12 รายการ):**
     ```bash
-    curl [https://assignment1-ui1l.onrender.com/logs/66011456](https://assignment1-ui1l.onrender.com/logs/66011456)
-    ```
+    curl https://assignment1-ui1l.onrender.com/logs/66011456
 * **ตัวอย่าง `curl` (Pagination):**
     ```bash
-    curl "[https://assignment1-ui1l.onrender.com/logs/66011456?page=1&perPage=5](https://assignment1-ui1l.onrender.com/logs/66011456?page=1&perPage=5)"
+    curl https://assignment1-ui1l.onrender.com/logs/66011456?page=1&perPage=5
     ```
 
 ### 4. `POST /logs`
