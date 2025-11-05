@@ -53,7 +53,7 @@ API Server นี้มี Endpoints ทั้งหมด 4 ส่วน:
 
 ```bash
 git clone https://github.com/talay1234/Assignment1.git
-cd drone1
+cd Assignment1
 ```
 
 ### 2. Install Dependencies
